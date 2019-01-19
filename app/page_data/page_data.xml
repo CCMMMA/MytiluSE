@@ -1,0 +1,16 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd">
+	<Page.actionBar>
+		<ActionBar title="Ricerca data" flat="true">
+			<NavigationButton text="Indietro"></NavigationButton>
+		</ActionBar>
+	</Page.actionBar>
+
+	<StackLayout class="home-panel">
+		<!--Add your page content here-->
+		<Label text="Seleziona data:" />
+		<ListPicker class="list_picker" id="date_search" items="{{ listPickerDate }}" selectedIndex="{{ selectedListPickerDate }}" />
+		<Label text="Seleziona ora (UTC):" />
+		<ListPicker class="list_picker" id="hours_search" items="{{ listPickerHour }}" selectedIndex="{{ selectedListPickerIndex }}" />
+		<Button class="button1" text="CERCA" tap="onTap" />
+	</StackLayout>
+</Page>

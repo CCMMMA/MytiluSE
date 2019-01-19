@@ -1,0 +1,17 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <ActionBar title="Progetto MytiluSE UniParthenope" flat="true" />
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" horizontalAlignment="center"
+        verticalAlignment="center" margin="10 10 10 10">
+        <Image src="~/images/Logo_Parthenope.png" width="175" />
+        <TextView editable="false" textAlignment="center" fontSize="14">
+            <FormattedString>
+                <Span text="{{ policy }}" />
+            </FormattedString>
+        </TextView>
+
+        <Button textWrap="true"  class="button1" text="CLICCA PER PROSEGUIRE" tap="onTap" />
+    </StackLayout>
+</Page>

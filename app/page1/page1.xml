@@ -1,0 +1,30 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
+	<Page.actionBar>
+		<ActionBar title="MytiluSE" flat="true">
+			<NavigationButton text="Indietro"></NavigationButton>
+		</ActionBar>
+	</Page.actionBar>
+
+	<StackLayout>		
+		<FlexboxLayout flexDirection="row" class="list-group1" isUserInteractionEnabled="false">
+			<Label class="list-center" text="Località"  style="flex-grow: 4;font-weight:bold;" />
+			<Label class="list-center" text="Corrente Superficiale" style="flex-grow: 1;font-weight:bold" />
+			<Label class="list-center" text="Stato" style="flex-grow: 1; font-weight:bold" />
+		</FlexboxLayout>
+
+		<ActivityIndicator class="activity-indicator" busy="{{ isBusy }}" height="{{isHeigh}}" />
+
+		<ScrollView height="100%">
+			<ListView class="list-group" items="{{ mytiluse2 }}" itemTap="onTap" orientation="vertical">
+				<ListView.itemTemplate>
+					<FlexboxLayout flexDirection="row" class="list-group-item">
+						<Label text="{{ name }}" style="width:250px; flex-grow: 3"/>
+						<Image src="{{ curDir }}" style="flex-grow: 1;  width:50px; height:50px;" />
+						<Label text="{{ curVal }}" style="flex-grow: 1; text-align: center;" />
+						<Image src="{{ status }}" style="flex-grow: 2; width:50px; height:50px" margin="0 5 0 5"/>
+					</FlexboxLayout>
+				</ListView.itemTemplate>
+			</ListView>
+		</ScrollView>
+	</StackLayout>
+</Page>

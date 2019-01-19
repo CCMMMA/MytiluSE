@@ -1,0 +1,69 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <ActionBar title="Mare" flat="true" />
+    </Page.actionBar>
+
+    <ScrollView height="100%">
+        <StackLayout class="home-panel">
+            <ActivityIndicator busy="{{isBusy_RMS3 }}" class="activity-indicator"
+                visibility="{{visible_RMS3}}" />
+            <Image src="{{ map_rms3 }}" alt="Map RMS3" />
+            <Image src="~/images/colorbar/bar_corr.png" marginBottom="20" />
+
+            <StackLayout height="2px" backgroundColor="#E2E6EB" marginBottom="20" />
+
+            <ActivityIndicator busy="{{isBusy_SAL }}" class="activity-indicator"
+                visibility="{{visible_SAL}}" />
+            <Image src="{{ map_sal }}" alt="Map SAL" />
+            <Image src="~/images/colorbar/bar_sss.png" marginBottom="20" />
+            
+            <StackLayout height="2px" backgroundColor="#E2E6EB" marginBottom="20" />
+
+            <ActivityIndicator busy="{{isBusy_TEMP }}" class="activity-indicator"
+                visibility="{{visible_TEMP}}" />
+            <Image src="{{ map_temp }}" alt="Map TEMP" />
+            <Image src="~/images/colorbar/bar_sst.png" marginBottom="20" />
+
+            <StackLayout height="2px" backgroundColor="#E2E6EB" marginBottom="20" />
+            <ActivityIndicator busy="{{isBusy_WCM3 }}" class="activity-indicator"
+                visibility="{{visible_WCM3}}" />
+            <Image src="{{ map_wcm3 }}" alt="Map WCM3" />
+            <Image src="~/images/colorbar/bar_concentrazion.png" />
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row" marginTop="20">
+                <Label text="Place:" verticalAlignment="center" style="font-weight:bold; flex-grow:1" />
+                <Label text="{{ place }}" verticalAlignment="center" />
+            </FlexboxLayout>
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row">
+                <Label text="Località:" verticalAlignment="center" style="font-weight:bold; flex-grow:1" />
+                <Label text="{{ loc }}" verticalAlignment="center" />
+            </FlexboxLayout>
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row">
+                <Label text="Corrente Sup. :" verticalAlignment="center"
+                    style="font-weight:bold; flex-grow:1" />
+                <Image src="{{ curDir }}" height="50px" marginRight="10" />
+                <Label text="{{ curVal }}" verticalAlignment="center" />
+            </FlexboxLayout>
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row">
+                <Label text="Temperatura Sup. :" verticalAlignment="center"
+                    style="font-weight:bold; flex-grow:1" />
+                <Label text="{{ T_Sup }}" verticalAlignment="center" />
+            </FlexboxLayout>
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row">
+                <Label text="Salinità Sup. :" verticalAlignment="center"
+                    style="font-weight:bold; flex-grow:1" />
+                <Label text="{{ S_Sup }}" verticalAlignment="center" />
+            </FlexboxLayout>
+
+            <FlexboxLayout flexWrap="wrap" flexDirection="row">
+                <Label text="Stato:" verticalAlignment="center" style="font-weight:bold; flex-grow:1" />
+                <Label text="{{ statVal }}" verticalAlignment="center" />
+                <Image src="{{ status }}" height="50px" marginLeft="10" />
+            </FlexboxLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

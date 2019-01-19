@@ -1,0 +1,12 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd">
+	<ActionBar title="{{ title_menu }}" flat="true">
+		<NavigationButton text="Indietro"></NavigationButton>
+	</ActionBar>
+
+	<ScrollView>
+		<StackLayout class="home-panel">
+			<Button class="button1" text="METEO" tap="onTapMeteo" style="margin:20 0 60 0" />
+			<Button class="button1" text="MARE" tap="onTapSea" />
+		</StackLayout>
+	</ScrollView>
+</Page>

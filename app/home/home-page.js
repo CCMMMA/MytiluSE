@@ -1,17 +1,21 @@
-var frameModule = require("ui/frame");
+
 var HomeViewModel = require("./home-view-model");
+var view = require("ui/core/view");
 var dialog = require("tns-core-modules/ui/dialogs");
 var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var homeViewModel = new HomeViewModel();
 var observableModule = require("data/observable");
+const application = require("tns-core-modules/application");
+const frameModule = require("tns-core-modules/ui/frame");
+var drawer
 
 function pageLoaded(args) {
   var page = args.object;
 
   var home = new Observable.fromObject({
   });
-
+  drawer = view.getViewById(page, "sideDrawer");
   //url
   var url = api_base_url + "/products";
   var url_policy = api_base_url + "/legal/discaimer";
@@ -44,3 +48,7 @@ function onTap(args) {
   page.frame.navigate("page_data/page_data");
 }
 exports.onTap = onTap;
+
+exports.toggleDrawer = function() {
+  drawer.toggleDrawerState();
+};

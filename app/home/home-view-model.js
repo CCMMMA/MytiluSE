@@ -1,5 +1,6 @@
 var frame = require("ui/frame");
-var observableModule = require("data/observable");
+const observableModule = require("tns-core-modules/data/observable");
+
 
 function HomeViewModel() {
 
@@ -8,5 +9,4 @@ function HomeViewModel() {
 
   return viewModel;
 }
-
 module.exports = HomeViewModel;

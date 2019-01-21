@@ -1,17 +1,49 @@
-<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer">
     <Page.actionBar>
-        <ActionBar title="Progetto MytiluSE UniParthenope" flat="true" />
+        <ActionBar title="Progetto MytiluSE UniParthenope" flat="true">
+            <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="toggleDrawer"></NavigationButton>
+
+            <ActionItem icon="res://navigation/menu"
+                        android:visibility="collapsed"
+                        tap="toggleDrawer"
+                        ios.position="left">
+            </ActionItem>
+        </ActionBar>
     </Page.actionBar>
 
-    <StackLayout orientation="vertical" horizontalAlignment="center"
-        verticalAlignment="center" margin="10 10 10 10">
-        <Image src="~/images/Logo_Parthenope.png" width="175" />
-        <TextView editable="false" textAlignment="center" fontSize="14">
-            <FormattedString>
-                <Span text="{{ policy }}" />
-            </FormattedString>
-        </TextView>
 
-        <Button textWrap="true"  class="button1" text="CLICCA PER PROSEGUIRE" tap="onTap" />
-    </StackLayout>
+
+
+        <sd:RadSideDrawer id="sideDrawer">
+            <sd:RadSideDrawer.drawerContent>
+                <StackLayout backgroundColor="white">
+                    <StackLayout style="text-align: center; vertical-align: center;" backgroundColor="#0060A0" height="75">
+                        <Label text="Hi, Username" padding = "10" backgroundColor="#0060A0" color="white"/>
+                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout>
+                            <Label text="Menu" padding="10" backgroundColor="#0060A0" color="white" height="50"/>
+                            <Label text="About" padding="10" height="50"/>
+                            <Label text="Log-in" padding="10" height="50"/>
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </sd:RadSideDrawer.drawerContent>
+
+            <sd:RadSideDrawer.mainContent>
+                <StackLayout orientation="vertical" horizontalAlignment="center"
+                             verticalAlignment="center" margin="10 10 10 10">
+                    <Image src="~/images/Logo_Parthenope.png" width="175" />
+                    <Label text="{{ policy }}" textWrap="true" fontSize="14" padding="10" textAlignment="center"/>
+
+                    <Button textWrap="true"  class="button1" text="CLICCA PER PROSEGUIRE" tap="onTap" margin="10 10 10 10"/>
+
+                </StackLayout>
+
+            </sd:RadSideDrawer.mainContent>
+
+        </sd:RadSideDrawer>
+
+
 </Page>

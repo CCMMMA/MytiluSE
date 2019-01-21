@@ -13,8 +13,8 @@ function pageLoaded(args) {
   });
 
   //url
-  var url = "http://api.meteo.uniparthenope.it/products";
-  var url_policy = "http://api.meteo.uniparthenope.it/legal/discaimer";
+  var url = api_base_url + "/products";
+  var url_policy = api_base_url + "/legal/discaimer";
 
   fetch(url_policy)
     .then((response) => response.json())

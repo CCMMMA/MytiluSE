@@ -41,13 +41,13 @@ function pageLoaded(args) {
 	//var url = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
 	//var url_status = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
 
-	var url_map_wcm3 = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url_sal = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + prec_data.send_data;
-	var url_temp = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + prec_data.send_data;
+	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
+	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + prec_data.send_data;
+	var url_temp = api_base_url +"/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + prec_data.send_data;
 
-	var url_map_rms3 = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
-	var url_status = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
+	var url_map_rms3 = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
+	var url = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
+	var url_status = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
 
 
 	// START FETCH MAP RMS3

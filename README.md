@@ -2,7 +2,6 @@
 Weather app 
 
 ## Usage
-Test commit!
 ```
 # Install dependencies
 npm install

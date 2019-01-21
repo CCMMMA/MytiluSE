@@ -32,7 +32,7 @@ function pageLoaded(args) {
         pageData.set("isBusy", true);//Load animation
         pageData.set("isHeigh", "25");
         //URL
-        var url = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + location[place] + "?date=" + search_data + "&opt=place";
+        var url = api_base_url + "/products/rms3/forecast/" + location[place] + "?date=" + search_data + "&opt=place";
         //var url = "http://193.205.230.6/products/rms3/forecast/" + location[place] + "?date=" + search_data + "&opt=place";
 
 
@@ -45,7 +45,7 @@ function pageLoaded(args) {
                     var scm = data.forecast.scm.toString();
                     var id = data.place.id;
                     var name_place = data.place.long_name.it;
-                    var url_wcm3 = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + id + "?date=" + search_data;
+                    var url_wcm3 = api_base_url + "/products/wcm3/forecast/" + id + "?date=" + search_data;
                     //var url_wcm3 = "http://193.205.230.6/products/wcm3/forecast/" + id + "?date=" + search_data;
                     var status;
                     //WORKING!

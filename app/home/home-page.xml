@@ -1,12 +1,16 @@
 <Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer">
     <Page.actionBar>
         <ActionBar title="Progetto MytiluSE UniParthenope" flat="true">
-            <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="toggleDrawer"></NavigationButton>
-
+            <ActionItem tap="toggleDrawer"
+                        ios.position = "right"
+                        text="About" android.position="popup"></ActionItem>
+            <ActionItem tap="toggleDrawer"
+                        ios:visibility="collapsed"
+                        text="LogIn" android.position="popup"></ActionItem>
             <ActionItem icon="res://navigation/menu"
                         android:visibility="collapsed"
                         tap="toggleDrawer"
-                        ios.position="left">
+                        ios.position="right">
             </ActionItem>
         </ActionBar>
     </Page.actionBar>
@@ -14,15 +18,11 @@
 
 
 
-        <sd:RadSideDrawer id="sideDrawer">
+        <sd:RadSideDrawer id="sideDrawer" drawerLocation="Top">
             <sd:RadSideDrawer.drawerContent>
-                <StackLayout backgroundColor="white">
-                    <StackLayout style="text-align: center; vertical-align: center;" backgroundColor="#0060A0" height="75">
-                        <Label text="Hi, Username" padding = "10" backgroundColor="#0060A0" color="white"/>
-                    </StackLayout>
+                <StackLayout backgroundColor="white" height ="100">
                     <ScrollView>
                         <StackLayout>
-                            <Label text="Menu" padding="10" backgroundColor="#0060A0" color="white" height="50"/>
                             <Label text="About" padding="10" height="50"/>
                             <Label text="Log-in" padding="10" height="50"/>
 

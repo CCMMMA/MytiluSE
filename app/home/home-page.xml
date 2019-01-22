@@ -1,49 +1,22 @@
 <Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer">
     <Page.actionBar>
         <ActionBar title="Progetto MytiluSE UniParthenope" flat="true">
-            <ActionItem tap="toggleDrawer"
+            <ActionItem tap="onTapLog"
+                        ios.position = "right"
+                        text="{{ login_status }}" android.position="popup"></ActionItem>
+            <ActionItem tap="onTapAbout"
                         ios.position = "right"
                         text="About" android.position="popup"></ActionItem>
-            <ActionItem tap="toggleDrawer"
-                        ios:visibility="collapsed"
-                        text="LogIn" android.position="popup"></ActionItem>
-            <ActionItem icon="res://navigation/menu"
-                        android:visibility="collapsed"
-                        tap="toggleDrawer"
-                        ios.position="right">
-            </ActionItem>
         </ActionBar>
     </Page.actionBar>
+    <ScrollView orientation="vertical">
+    <StackLayout orientation="vertical" horizontalAlignment="center"
+                 verticalAlignment="center" margin="10 10 10 10">
+        <Image src="~/images/logo_mytiluse.png" marginBottom="25"/>
+        <Label text="{{ policy }}" textWrap="true" fontSize="13" textAlignment="center"/>
 
+        <Button textWrap="true"  class="button1" text="CLICCA PER PROSEGUIRE" tap="onTap" marginTop="10"/>
 
-
-
-        <sd:RadSideDrawer id="sideDrawer" drawerLocation="Top">
-            <sd:RadSideDrawer.drawerContent>
-                <StackLayout backgroundColor="white" height ="100">
-                    <ScrollView>
-                        <StackLayout>
-                            <Label text="About" padding="10" height="50"/>
-                            <Label text="Log-in" padding="10" height="50"/>
-
-                        </StackLayout>
-                    </ScrollView>
-                </StackLayout>
-            </sd:RadSideDrawer.drawerContent>
-
-            <sd:RadSideDrawer.mainContent>
-                <StackLayout orientation="vertical" horizontalAlignment="center"
-                             verticalAlignment="center" margin="10 10 10 10">
-                    <Image src="~/images/Logo_Parthenope.png" width="175" />
-                    <Label text="{{ policy }}" textWrap="true" fontSize="14" padding="10" textAlignment="center"/>
-
-                    <Button textWrap="true"  class="button1" text="CLICCA PER PROSEGUIRE" tap="onTap" margin="10 10 10 10"/>
-
-                </StackLayout>
-
-            </sd:RadSideDrawer.mainContent>
-
-        </sd:RadSideDrawer>
-
-
+    </StackLayout>
+    </ScrollView>
 </Page>

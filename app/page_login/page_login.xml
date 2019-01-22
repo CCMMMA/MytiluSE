@@ -1,0 +1,11 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:sd="nativescript-ui-sidedrawer">
+    <Page.actionBar>
+        <ActionBar title="Login" flat="true"></ActionBar>
+
+    </Page.actionBar>
+    <ScrollView orientation="vertical">
+
+
+    </ScrollView>
+</Page>

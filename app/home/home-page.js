@@ -15,6 +15,7 @@ function pageLoaded(args) {
 
   var home = new Observable.fromObject({
   });
+  home.set("login_status", "Login");
   drawer = view.getViewById(page, "sideDrawer");
   //url
   var url = api_base_url + "/products";
@@ -49,6 +50,14 @@ function onTap(args) {
 }
 exports.onTap = onTap;
 
-exports.toggleDrawer = function() {
-  drawer.toggleDrawerState();
+exports.onTapAbout = function(args) {
+  const button = args.object;
+  const page = button.page;
+  page.frame.navigate("page_about/page_about");
+};
+
+exports.onTapLog = function(args) {
+  const button = args.object;
+  const page = button.page;
+  page.frame.navigate("page_login/page_login");
 };

@@ -6,6 +6,7 @@ var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var imageSource = require("image-source");
 var dialog = require("tns-core-modules/ui/dialogs");
+const appSettings = require("application-settings");
 
 function pageLoaded(args) {
 	var page = args.object;
@@ -20,9 +21,11 @@ function pageLoaded(args) {
 		map_temp: src_map_temp,
 		map_rms3: src_map2
 	});
-
-	page2.set("isBusy_WCM3", true);
-	page2.set("visible_WCM3", "visible");
+	if (appSettings.getNumber("mytiluse") != 0)
+	{
+		page2.set("isBusy_WCM3", true);
+		page2.set("visible_WCM3", "visible");
+	}
 	page2.set("isBusy_SAL", true);
 	page2.set("visible_SAL", "visible");
 	page2.set("isBusy_TEMP", true);
@@ -34,12 +37,6 @@ function pageLoaded(args) {
 	console.log("Data : ", prec_data.send_data);
 	console.log("ID : ", prec_data.send_ind);
 	console.log("Nome : ", prec_data.send_name);
-
-	//URLs
-	//var url_map_wcm3 = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	//var url_map_rms3 = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	//var url = "http://api.meteo.uniparthenope.it/products/rms3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
-	//var url_status = "http://api.meteo.uniparthenope.it/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
 
 	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
 	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + prec_data.send_data;
@@ -86,48 +83,65 @@ function pageLoaded(args) {
 		.catch(err => {
 			// console.log("Somthing went wrong!");
 		})
-	// START FETCH MAP WCM3
-	imageSource.fromUrl(url_map_wcm3)
-		.then(function () {
-			page2.map_wcm3 = url_map_wcm3;
-		})
-		.then(function () {
-			page2.set("isBusy_WCM3", false);
-			page2.set("visible_WCM3", "collapsed");
-		})
-		.catch(err => {
-			// console.log("Somthing went wrong!");
-		})
+	if (appSettings.getNumber("mytiluse") != 0) {
+		// START FETCH MAP WCM3
+		imageSource.fromUrl(url_map_wcm3)
+			.then(function () {
+				page2.map_wcm3 = url_map_wcm3;
+			})
+			.then(function () {
+				page2.set("isBusy_WCM3", false);
+				page2.set("visible_WCM3", "collapsed");
+			})
+			.catch(err => {
+				// console.log("Somthing went wrong!");
+			})
+	}
+	else {
+		page2.set("visible_WCM3_map", "collapsed");
+		page2.set("visible_WCM3_bar", "collapsed");
+	}
 	// START FETCH STATUS
-	fetch(url_status)
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.result == "ok") {
-				var stat = data.forecast.sts;
-				switch (stat) {
-					case 0: page2.set("statVal", "Absent");
-						break;
-					case 1: page2.set("statVal", "Very low");
-						break;
-					case 2: page2.set("statVal", "Low");
-						break;
-					case 3: page2.set("statVal", "Medium");
-						break;
-					case 4: page2.set("statVal", "High");
-						break;
-					case 5: page2.set("statVal", "Very High");
-						break;
-					case 6: page2.set("statVal", "Forbidden");
-						break;
+	if (appSettings.getNumber("mytiluse") != 0) {
+		fetch(url_status)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.result == "ok") {
+					var stat = data.forecast.sts;
+					switch (stat) {
+						case 0:
+							page2.set("statVal", "Absent");
+							break;
+						case 1:
+							page2.set("statVal", "Very low");
+							break;
+						case 2:
+							page2.set("statVal", "Low");
+							break;
+						case 3:
+							page2.set("statVal", "Medium");
+							break;
+						case 4:
+							page2.set("statVal", "High");
+							break;
+						case 5:
+							page2.set("statVal", "Very High");
+							break;
+						case 6:
+							page2.set("statVal", "Forbidden");
+							break;
+					}
+					page2.set("status", "~/images/status/" + stat + ".png");
+				} else if (data.result == "error") {
+					dialog.alert({title: "Errore", message: data1.details, okButtonText: "OK"});
 				}
-				page2.set("status", "~/images/status/" + stat + ".png");
-			}
-			else if (data.result == "error") {
-				dialog.alert({ title: "Errore", message: data1.details, okButtonText: "OK" });
-			}
-		})
-		.catch(error => console.error("[PAGE_SEA] ERROR DATA ", error));
-
+			})
+			.catch(error => console.error("[PAGE_SEA] ERROR DATA ", error));
+	}
+	else {
+		page2.set("statVal", "N/A");
+		page2.set("status", "~/images/status/0.png");
+	}
 	// START FETCH DATA
 	fetch(url)
 		.then((response) => response.json())

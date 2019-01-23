@@ -26,6 +26,8 @@
     "nativescript-imagepicker": "6.0.5",
     "nativescript-intl": "3.0.0",
     "nativescript-iqkeyboardmanager": "1.3.0",
+    "nativescript-loading-indicator": "^2.4.0",
+    "nativescript-loading-indicator-new": "^2.1.0",
     "nativescript-social-share": "1.5.1",
     "nativescript-theme-core": "1.0.4",
     "nativescript-ui-autocomplete": "3.10.3",

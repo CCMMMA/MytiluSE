@@ -8,14 +8,57 @@ var homeViewModel = new HomeViewModel();
 var observableModule = require("data/observable");
 const application = require("tns-core-modules/application");
 const frameModule = require("tns-core-modules/ui/frame");
-var drawer
+const appSettings = require("application-settings");
+const httpModule = require("http");
+var drawer;
+var home;
+var firstTime = true;
 
 function pageLoaded(args) {
   var page = args.object;
-
-  var home = new Observable.fromObject({
+   home = new Observable.fromObject({
   });
-  home.set("login_status", "Login");
+
+   const user = appSettings.getString("username");
+   const pass = appSettings.getString("password");
+    console.log("Previus Info: USER = "+ user + " PASS =" + pass );
+   const url_login = api_base_url + "/user/login";
+
+   if (user != null && pass != null && isLogged == 0 && firstTime)
+   {
+     httpModule.request({
+       url: url_login,
+       method: "POST",
+       headers: {"Content-Type": "application/json"},
+       content: JSON.stringify({
+         name: user,
+         pass: pass
+       })
+     }).then((response) => {
+           const result = response.content.toJSON();
+           console.log(result.message);
+           //Disattiva rotellina
+
+           if (result.message == null) { //LOGIN SUCCESS
+             console.log("Logged as: USER = "+ user + " PASS =" + pass );
+             isLogged = 1;
+             home.set("login_status", "Login");
+             dialog.alert({title: "", message: "Connesso!", okButtonText: "OK"});
+             firstTime = false;
+           } else { //LOGGIN INSUCCESS
+             dialog.alert({title: "Error", message: result.message, okButtonText: "OK"});
+           }
+         },
+         (e) => {
+           console.log("Error");
+         });
+   }
+
+  if (isLogged == 0)
+    home.set("login_status", "Login");
+  else if (isLogged > 0)
+    home.set("login_status", "Logout");
+
   drawer = view.getViewById(page, "sideDrawer");
   //url
   var url = api_base_url + "/products";
@@ -59,5 +102,24 @@ exports.onTapAbout = function(args) {
 exports.onTapLog = function(args) {
   const button = args.object;
   const page = button.page;
-  page.frame.navigate("page_login/page_login");
+
+  if(isLogged == 0)
+    page.frame.navigate("page_login/page_login");
+  else
+    {
+      dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
+      then(function (result) {
+        if  (result)
+        {
+          home.set("login_status", "Login");
+          isLogged = 0;
+          appSettings.remove("username");
+          appSettings.remove("password");
+          appSettings.remove("privileges");
+
+          dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+        }
+      })
+
+    }
 };

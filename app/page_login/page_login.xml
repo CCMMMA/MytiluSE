@@ -1,11 +1,28 @@
-<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:sd="nativescript-ui-sidedrawer">
+<Page loaded="pageLoaded" class="page" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer">
     <Page.actionBar>
         <ActionBar title="Login" flat="true"></ActionBar>
 
     </Page.actionBar>
-    <ScrollView orientation="vertical">
+    <ScrollView orientation="vertical" verticalAlignment="center">
+        <FlexboxLayout class="page">
+            <StackLayout class="form">
+                <Image class="logo" src="~/images/Logo_Parthenope.png"></Image>
 
+                <StackLayout class="input-field">
+                    <TextField class="input" hint="username" autocorrect="false" autocapitalizationType="none"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
 
+                <StackLayout class="input-field">
+                    <TextField class="input" hint="password" secure="true"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <Button text="Log In" class="btn-primary m-t-20" tap="OnTapLogin"></Button>
+            <Label text="Forgot your password?" class="login-label"></Label>
+
+        </FlexboxLayout>
     </ScrollView>
+
 </Page>

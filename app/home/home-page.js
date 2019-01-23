@@ -114,7 +114,7 @@ exports.onTapLog = function(args) {
           isLogged = 0;
           appSettings.remove("username");
           appSettings.remove("password");
-          appSettings.remove("privileges");
+          appSettings.setNumber("mytiluse", 0);
 
           dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
         }

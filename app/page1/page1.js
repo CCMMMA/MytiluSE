@@ -26,6 +26,8 @@ function pageLoaded(args) {
     });
     search_data = page.navigationContext; //Read data from data_page
 
+    console.log(appSettings.getNumber("mytiluse"));
+
     for (place = 0; place < location.length; place++)
     {
         pageData.set("isBusy", true);//Load animation

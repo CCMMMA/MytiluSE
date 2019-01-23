@@ -9,18 +9,18 @@
                 <Image class="logo" src="~/images/Logo_Parthenope.png"></Image>
 
                 <StackLayout class="input-field">
-                    <TextField class="input" hint="username" autocorrect="false" autocapitalizationType="none"></TextField>
+                    <TextField class="input" hint="username" autocorrect="false" autocapitalizationType="none" id="username"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <StackLayout class="input-field">
-                    <TextField class="input" hint="password" secure="true"></TextField>
+                    <TextField class="input" hint="password" secure="true" id="password"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
             </StackLayout>
 
             <Button text="Log In" class="btn-primary m-t-20" tap="OnTapLogin"></Button>
-            <Label text="Forgot your password?" class="login-label"></Label>
+            <Label text="Password dimenticata?" class="login-label"></Label>
 
         </FlexboxLayout>
     </ScrollView>

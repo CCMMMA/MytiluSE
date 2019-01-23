@@ -21,7 +21,7 @@ function pageLoaded(args) {
 
    const user = appSettings.getString("username");
    const pass = appSettings.getString("password");
-    console.log("Previus Info: USER = "+ user + " PASS =" + pass );
+   console.log("Previus Info: USER = "+ user + " PASS =" + pass );
    const url_login = api_base_url + "/user/login";
 
    if (user != null && pass != null && isLogged == 0 && firstTime)
@@ -42,8 +42,8 @@ function pageLoaded(args) {
            if (result.message == null) { //LOGIN SUCCESS
              console.log("Logged as: USER = "+ user + " PASS =" + pass );
              isLogged = 1;
-             home.set("login_status", "Login");
              dialog.alert({title: "", message: "Connesso!", okButtonText: "OK"});
+             home.set("login_status", "Logout");
              firstTime = false;
            } else { //LOGGIN INSUCCESS
              dialog.alert({title: "Error", message: result.message, okButtonText: "OK"});
@@ -59,7 +59,6 @@ function pageLoaded(args) {
   else if (isLogged > 0)
     home.set("login_status", "Logout");
 
-  drawer = view.getViewById(page, "sideDrawer");
   //url
   var url = api_base_url + "/products";
   var url_policy = api_base_url + "/legal/discaimer";

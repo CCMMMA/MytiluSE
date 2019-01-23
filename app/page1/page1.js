@@ -74,7 +74,7 @@ function pageLoaded(args) {
                             "name": name_place,
                             "curDir": "~/images/arrow/" + scs + ".jpg",
                             "curVal": scm + " m/sec",
-                            "status": "~/images/status/0.png"
+                            "status": "~/images/status/none.png"
                         });
                         array.sort(function (orderA, orderB) {
                             var nameA = orderA.name;

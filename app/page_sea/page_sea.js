@@ -140,7 +140,7 @@ function pageLoaded(args) {
 	}
 	else {
 		page2.set("statVal", "N/A");
-		page2.set("status", "~/images/status/0.png");
+		page2.set("status", "~/images/status/none.png");
 	}
 	// START FETCH DATA
 	fetch(url)

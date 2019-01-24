@@ -29,9 +29,9 @@ function pageLoaded(args) {
 	console.log("Nome : ", prec_data.send_name);
 
 	//URLs
-	var url_map = "http://api.meteo.uniparthenope.it/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url_map2 = "http://api.meteo.uniparthenope.it/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?output=wn1&date=" + prec_data.send_data;
-	var url = "http://api.meteo.uniparthenope.it/products/wrf5/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
+	var url_map = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
+	var url_map2 = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?output=wn1&date=" + prec_data.send_data;
+	var url = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
 
 
 	// START FETCH MAP1

@@ -21,7 +21,7 @@ function pageLoaded(args) {
 		map_temp: src_map_temp,
 		map_rms3: src_map2
 	});
-	if (appSettings.getNumber("mytiluse") != 0)
+	if (appSettings.getNumber("mytiluse",0) == 1)
 	{
 		page2.set("isBusy_WCM3", true);
 		page2.set("visible_WCM3", "visible");
@@ -83,7 +83,7 @@ function pageLoaded(args) {
 		.catch(err => {
 			// console.log("Somthing went wrong!");
 		})
-	if (appSettings.getNumber("mytiluse") != 0) {
+	if (appSettings.getNumber("mytiluse",0) == 1) {
 		// START FETCH MAP WCM3
 		imageSource.fromUrl(url_map_wcm3)
 			.then(function () {
@@ -102,7 +102,7 @@ function pageLoaded(args) {
 		page2.set("visible_WCM3_bar", "collapsed");
 	}
 	// START FETCH STATUS
-	if (appSettings.getNumber("mytiluse") != 0) {
+	if (appSettings.getNumber("mytiluse",0) == 1) {
 		fetch(url_status)
 			.then((response) => response.json())
 			.then((data) => {

@@ -26,7 +26,7 @@ function pageLoaded(args) {
     });
     search_data = page.navigationContext; //Read data from data_page
 
-    console.log(appSettings.getNumber("mytiluse"));
+    console.log("Privileges = " + appSettings.getNumber("mytiluse",0));
 
     for (place = 0; place < location.length; place++)
     {
@@ -46,7 +46,7 @@ function pageLoaded(args) {
                     var id = data.place.id;
                     var name_place = data.place.long_name.it;
 
-                    if (appSettings.getNumber("mytiluse") != 0)
+                    if (appSettings.getNumber("mytiluse",0) == 1) //Mytiluse privilege
                     {
                         var url_wcm3 = api_base_url + "/products/wcm3/forecast/" + id + "?date=" + search_data;
                         var status;

@@ -18,8 +18,8 @@ function pageLoaded(args) {
    home = new Observable.fromObject({
   });
 
-   const user = appSettings.getString("username");
-   const pass = appSettings.getString("password");
+   const user = appSettings.getString("username",null);
+   const pass = appSettings.getString("password",null);
    console.log("Previus Info: USER = "+ user + " PASS =" + pass );
    const url_login = api_base_url + "/user/login";
 

@@ -1,4 +1,3 @@
-
 var HomeViewModel = require("./home-view-model");
 var view = require("ui/core/view");
 var dialog = require("tns-core-modules/ui/dialogs");

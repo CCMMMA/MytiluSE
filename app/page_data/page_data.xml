@@ -5,6 +5,7 @@
 		</ActionBar>
 	</Page.actionBar>
 
+	<ScrollView>
 	<StackLayout class="home-panel">
 		<!--Add your page content here-->
 		<Label text="Seleziona data:" />
@@ -13,4 +14,5 @@
 		<ListPicker class="list_picker" id="hours_search" items="{{ listPickerHour }}" selectedIndex="{{ selectedListPickerIndex }}" />
 		<Button class="button1" text="CERCA" tap="onTap" />
 	</StackLayout>
+	</ScrollView>
 </Page>

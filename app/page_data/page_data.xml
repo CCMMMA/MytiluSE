@@ -9,9 +9,9 @@
 	<StackLayout class="home-panel">
 		<!--Add your page content here-->
 		<Label text="Seleziona data:" />
-		<ListPicker class="list_picker" id="date_search" items="{{ listPickerDate }}" selectedIndex="{{ selectedListPickerDate }}" />
+		<DatePicker id="datePicker" loaded="onDatePickerLoaded" date="{{ date_pick }}" minDate="{{ minDate }}" maxDate="{{ maxDate }}"></DatePicker>
 		<Label text="Seleziona ora (UTC):" />
-		<ListPicker class="list_picker" id="hours_search" items="{{ listPickerHour }}" selectedIndex="{{ selectedListPickerIndex }}" />
+		<ListPicker class="list_picker" id="hours_search" items="{{ listPickerHour }}" selectedIndex="12" />
 		<Button class="button1" text="CERCA" tap="onTap" />
 	</StackLayout>
 	</ScrollView>

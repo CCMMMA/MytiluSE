@@ -114,3 +114,10 @@ Label.list-center
 {
     margin-bottom: 20;
 }
+
+.date-picker {
+    background-color: white;
+    border-radius: 20;
+    color: orangered; /* iOS only*/
+    width: 80%;
+}

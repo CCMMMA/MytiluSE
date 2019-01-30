@@ -10,16 +10,16 @@ var date = "";
 
 function pageLoaded(args) {
 	var page = args.object;
-
+	const TODAY = new Date();
 	var page_data = new Observable.fromObject({
 		selectedListPickerDate: 14,
 		listPickerHour: ["00", "01", "02", "03", "04",
 			"05", "06", "07", "08", "09", "10", "11",
-			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
-		//selectedListPickerIndex: hour
+			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+		selectedListPickerIndex: TODAY.getUTCHours()
 	});
 
-	const TODAY = new Date();
+
 	page_data.set("date_pick", TODAY); // the binded date property accepts Date object
 	page_data.set("minDate", new Date(2018, 0, 29)); // the binded minDate property accepts Date object
 	page_data.set("maxDate", new Date(2020, 4, 12)); // the binded maxDate property accepts Date object
@@ -28,7 +28,7 @@ function pageLoaded(args) {
 	year = TODAY.getUTCFullYear().toString();
 
 	date = year + month + day;
-	console.log("Costruzione: "+ date);
+	//console.log("Date: "+ date);
 
 	page.bindingContext = page_data;
 

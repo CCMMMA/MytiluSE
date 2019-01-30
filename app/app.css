@@ -86,7 +86,7 @@ Label.list-center
     margin-bottom: 25;
 }
 .input {
-    font-size: 18;
+    font-size: 16;
     placeholder-color: #A8A8A8;
 }
 
@@ -113,11 +113,4 @@ Label.list-center
 .sign-up-label
 {
     margin-bottom: 20;
-}
-
-.date-picker {
-    background-color: white;
-    border-radius: 20;
-    color: orangered; /* iOS only*/
-    width: 80%;
 }

@@ -6,7 +6,7 @@
     <ScrollView orientation="vertical" verticalAlignment="center">
 
             <StackLayout class="home-panel">
-                <Image src="~/images/logo_mytiluse.png.png" marginBottom="75"></Image>
+                <Image src="~/images/logo_mytiluse.png" marginBottom="75"></Image>
 
                 <StackLayout class="input-field">
                     <TextField class="input" hint="Username" autocorrect="false" autocapitalizationType="none" id="username"></TextField>

@@ -22,7 +22,7 @@ function pageLoaded(args) {
 
 	page_data.set("date_pick", TODAY); // the binded date property accepts Date object
 	page_data.set("minDate", new Date(2018, 0, 29)); // the binded minDate property accepts Date object
-	page_data.set("maxDate", new Date(2020, 4, 12)); // the binded maxDate property accepts Date object
+	page_data.set("maxDate", new Date(2030, 4, 12)); // the binded maxDate property accepts Date object
 	day = TODAY.getUTCDate().toString();
 	month = TODAY.getUTCMonth().toString() + 1;
 	year = TODAY.getUTCFullYear().toString();

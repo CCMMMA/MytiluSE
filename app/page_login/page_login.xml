@@ -5,22 +5,18 @@
     </Page.actionBar>
     <ScrollView orientation="vertical" verticalAlignment="center">
 
-            <StackLayout class="home-panel">
-                <Image src="~/images/logo_mytiluse.png" marginBottom="75"></Image>
+            <StackLayout class="home-panel" verticalAlignment="top">
+                <Image src="~/images/logo_mytiluse.png" marginBottom="45"></Image>
 
-                <StackLayout class="input-field">
-                    <TextField class="input" hint="Username" autocorrect="false" autocapitalizationType="none" id="username"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
-
-                <StackLayout class="input-field" marginBottom="50">
+                <StackLayout class="input-field" verticalAlignment="middle">
+                    <TextField class="input" hint="Username" autocorrect="false" autocapitalizationType="none" id="username" marginBottom="15"></TextField>
                     <TextField class="input" hint="Password" secure="true" id="password"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
-                <StackLayout >
+
+                <StackLayout verticalAlignment="bottom">
                     <Button text="LOGIN" class="button1" tap="OnTapLogin" marginBottom="10"></Button>
-                    <Label text="Password dimenticata?" class="login-label"></Label>
+                    <Label text="Password dimenticata?" class="login-label" tap="resetAccount"></Label>
                 </StackLayout>
             </StackLayout>
 

@@ -5,6 +5,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 const httpModule = require("http");
 var view = require("ui/core/view");
 var homeViewModel = new PageLoginViewModel();
+var utilityModule = require("utils/utils");
 var dialog = require("tns-core-modules/ui/dialogs");
 const appSettings = require("application-settings");
 
@@ -59,4 +60,9 @@ exports.OnTapLogin = function(args)
             (e) => {
                 console.log("Error");
             });
+};
+
+exports.resetAccount = function(args)
+{
+    utilityModule.openUrl("https://meteo.uniparthenope.it/user/password");
 };

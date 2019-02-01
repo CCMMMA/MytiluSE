@@ -24,10 +24,20 @@ function pageLoaded(args) {
 	page_data.set("minDate", new Date(2018, 0, 29)); // the binded minDate property accepts Date object
 	page_data.set("maxDate", new Date(2030, 4, 12)); // the binded maxDate property accepts Date object
 	day = TODAY.getUTCDate().toString();
-	month = TODAY.getUTCMonth().toString() + 1;
+	month = (TODAY.getUTCMonth() + 1).toString();
 	year = TODAY.getUTCFullYear().toString();
 
+	if(day < 10)
+		day = "0" + day;
+	if(month < 10)
+		month = "0" + month;
+
+
+	//console.log("Giorno: " + day);
+	//console.log("Mese: " + month);
+
 	date = year + month + day;
+
 	//console.log("Date: "+ date);
 
 	page.bindingContext = page_data;

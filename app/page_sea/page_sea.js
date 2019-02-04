@@ -7,6 +7,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 var imageSource = require("image-source");
 var dialog = require("tns-core-modules/ui/dialogs");
 const appSettings = require("application-settings");
+var page2;
 
 function pageLoaded(args) {
 	var page = args.object;
@@ -15,12 +16,18 @@ function pageLoaded(args) {
 	var src_map_sal;
 	var src_map_temp;
 
-	var page2 = new Observable.fromObject({
+	page2 = new Observable.fromObject({
 		map_wcm3: src_map,
 		map_sal: src_map_sal,
 		map_temp: src_map_temp,
 		map_rms3: src_map2
 	});
+
+	if (isLogged == 0)
+		page2.set("login_status", "Login");
+	else if (isLogged > 0)
+		page2.set("login_status", "Logout");
+
 	if (appSettings.getNumber("mytiluse",0) == 1)
 	{
 		page2.set("isBusy_WCM3", true);
@@ -106,7 +113,8 @@ function pageLoaded(args) {
 		fetch(url_status)
 			.then((response) => response.json())
 			.then((data) => {
-				if (data.result == "ok") {
+				if (data.result == "ok")
+				{
 					var stat = data.forecast.sts;
 					switch (stat) {
 						case 0:
@@ -132,8 +140,12 @@ function pageLoaded(args) {
 							break;
 					}
 					page2.set("status", "~/images/status/" + stat + ".png");
-				} else if (data.result == "error") {
-					dialog.alert({title: "Errore", message: data1.details, okButtonText: "OK"});
+				}
+				else if (data.result == "error")
+				{
+					//dialog.alert({title: "Errore", message: data1.details, okButtonText: "OK"});
+					page2.set("statVal", "Absent");
+					page2.set("status", "~/images/status/0.png");
 				}
 			})
 			.catch(error => console.error("[PAGE_SEA] ERROR DATA ", error));
@@ -165,3 +177,34 @@ function pageLoaded(args) {
 }
 
 exports.pageLoaded = pageLoaded;
+
+
+exports.onTapAbout = function(args) {
+	const button = args.object;
+	const page = button.page;
+	page.frame.navigate("page_about/page_about");
+};
+
+exports.onTapLog = function(args) {
+	const button = args.object;
+	const page2 = button.page;
+
+	if(isLogged == 0)
+		page2.frame.navigate("page_login/page_login");
+	else
+	{
+		dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
+		then(function (result) {
+			if  (result)
+			{
+				page2.set("login_status", "Login");
+				isLogged = 0;
+				appSettings.remove("username");
+				appSettings.remove("password");
+				appSettings.setNumber("mytiluse", 0);
+
+				dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+			}
+		})
+	}
+};

@@ -2,6 +2,12 @@
 	<Page.actionBar>
 		<ActionBar title="MytiluSE" flat="true">
 			<NavigationButton text="Indietro"></NavigationButton>
+			<ActionItem tap="onTapLog"
+						ios.position = "right"
+						text="{{ login_status }}" android.position="popup"></ActionItem>
+			<ActionItem tap="onTapAbout"
+						ios.position = "right"
+						text="About" android.position="popup"></ActionItem>
 		</ActionBar>
 	</Page.actionBar>
 

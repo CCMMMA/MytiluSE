@@ -7,16 +7,22 @@ var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var imageSource = require("image-source");
 var dialog = require("tns-core-modules/ui/dialogs");
+var page2;
 
 function pageLoaded(args) {
 	var page = args.object;
 
 	var src_map;
 	var src_map2;
-	var page2 = new Observable.fromObject({
+	page2 = new Observable.fromObject({
 		map: src_map,
 		map2: src_map2
 	});
+
+	if (isLogged == 0)
+		page2.set("login_status", "Login");
+	else if (isLogged > 0)
+		page2.set("login_status", "Logout");
 
 	page2.set("isBusy", true);
 	page2.set("isVisible", "visible");
@@ -84,3 +90,34 @@ function pageLoaded(args) {
 }
 
 exports.pageLoaded = pageLoaded;
+
+
+exports.onTapAbout = function(args) {
+	const button = args.object;
+	const page = button.page;
+	page.frame.navigate("page_about/page_about");
+};
+
+exports.onTapLog = function(args) {
+	const button = args.object;
+	const page2 = button.page;
+
+	if(isLogged == 0)
+		page2.frame.navigate("page_login/page_login");
+	else
+	{
+		dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
+		then(function (result) {
+			if  (result)
+			{
+				page2.set("login_status", "Login");
+				isLogged = 0;
+				appSettings.remove("username");
+				appSettings.remove("password");
+				appSettings.setNumber("mytiluse", 0);
+
+				dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+			}
+		})
+	}
+};

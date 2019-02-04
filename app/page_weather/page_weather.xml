@@ -1,6 +1,13 @@
 <Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd">
     <Page.actionBar>
-        <ActionBar title="Meteo" flat="true" />
+        <ActionBar title="Meteo">
+        <ActionItem tap="onTapLog"
+                    ios.position = "right"
+                    text="{{ login_status }}" android.position="popup"></ActionItem>
+        <ActionItem tap="onTapAbout"
+                    ios.position = "right"
+                    text="About" android.position="popup"></ActionItem>
+        </ActionBar>
     </Page.actionBar>
 
     <ScrollView height="100%">

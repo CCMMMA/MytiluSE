@@ -5,26 +5,29 @@ var page1ViewModel = new Page1ViewModel();
 var listViewModule = require("tns-core-modules/ui/list-view");
 var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
-const timerModule = require("tns-core-modules/timer");
-
 
 var search_data;
 var place;
-var place_str;
-var index_string;
 var array;
 var location = ["VET0130", "VET0020", "VET0021", "VET0072", "VET0071", "VET0100", "VET0062", "VET0150", "VET0055", "VET0054", "VET0056", "VET0051", "VET0050", "VET0053", "VET0052", "VET0121", "VET0123", "VET0122", "VET0125", "VET0124", "VET0000", "VET0031", "VET0030", "VET0140", "VET0061", "VET0063", "VET0064", "VET0110", "VET0010", "VET0160", "VET0057", "VET0042", "VET0041"];
-var array_status = ["Absent", "VeryLow", "Low", "Medium", "High", "VeryHigh"];
 const appSettings = require("application-settings");
+var pageData;
 
 function pageLoaded(args) {
     var page = args.object;
     var flag = true;
     array = new ObservableArray();
-    var pageData = new Observable.fromObject({
+    pageData = new Observable.fromObject({
         mytiluse2: array
     });
     search_data = page.navigationContext; //Read data from data_page
+
+
+    console.log("LOG: " + isLogged);
+    if (isLogged == 0)
+        pageData.set("login_status", "Login");
+    else if (isLogged > 0)
+        pageData.set("login_status", "Logout");
 
     console.log("Privileges = " + appSettings.getNumber("mytiluse",0));
 
@@ -54,7 +57,9 @@ function pageLoaded(args) {
                         fetch(url_wcm3)
                             .then((response) => response.json())
                             .then((json) => {
-                                console.log(json);
+                                //console.log(json);
+
+
 
                                 if(json.result == "ok")
                                 {
@@ -150,3 +155,35 @@ exports.onTap = onTap;
 
 
 exports.pageLoaded = pageLoaded;
+
+exports.onTapAbout = function(args) {
+    const button = args.object;
+    const page = button.page;
+    page.frame.navigate("page_about/page_about");
+};
+
+exports.onTapLog = function(args) {
+    const button = args.object;
+    const pageData = button.page;
+
+    if(isLogged == 0)
+        pageData.frame.navigate("page_login/page_login");
+    else
+    {
+        dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
+        then(function (result) {
+            if  (result)
+            {
+                pageData.set("login_status", "Login");
+                isLogged = 0;
+                appSettings.remove("username");
+                appSettings.remove("password");
+                appSettings.setNumber("mytiluse", 0);
+
+                dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+                pageData.frame.navigate("home/home_page");
+            }
+        })
+
+    }
+};

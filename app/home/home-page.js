@@ -9,7 +9,6 @@ const application = require("tns-core-modules/application");
 const frameModule = require("tns-core-modules/ui/frame");
 const appSettings = require("application-settings");
 const httpModule = require("http");
-var drawer;
 var home;
 var firstTime = true;
 

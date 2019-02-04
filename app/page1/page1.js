@@ -54,20 +54,41 @@ function pageLoaded(args) {
                         fetch(url_wcm3)
                             .then((response) => response.json())
                             .then((json) => {
-                                status = json.forecast.sts;
-                                array.push({
-                                    "id": id,
-                                    "name": name_place,
-                                    "curDir": "~/images/arrow/" + scs + ".jpg",
-                                    "curVal": scm + " m/sec",
-                                    "status": "~/images/status/" + status + ".png"
-                                });
-                                array.sort(function (orderA, orderB) {
-                                    var nameA = orderA.name;
-                                    var nameB = orderB.name;
-                                    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
-                                });
+                                console.log(json);
 
+                                if(json.result == "ok")
+                                {
+                                    status = json.forecast.sts;
+                                    array.push({
+                                        "id": id,
+                                        "name": name_place,
+                                        "curDir": "~/images/arrow/" + scs + ".jpg",
+                                        "curVal": scm + " m/sec",
+                                        "status": "~/images/status/" + status + ".png"
+                                    });
+                                    array.sort(function (orderA, orderB) {
+                                        var nameA = orderA.name;
+                                        var nameB = orderB.name;
+                                        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+                                    });
+                                }
+                                else if(json.result == "error")
+                                {
+                                    array.push({
+                                        "id": id,
+                                        "name": name_place,
+                                        "curDir": "~/images/arrow/" + scs + ".jpg",
+                                        "curVal": scm + " m/sec",
+                                        "status": "~/images/status/none.png"
+                                    });
+                                    array.sort(function (orderA, orderB) {
+                                        var nameA = orderA.name;
+                                        var nameB = orderB.name;
+                                        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+                                    });
+
+                                    //dialog.alert({title : "Errore", message: "Status non disponibile", okButtonText: "OK"});
+                                }
                             });
                     }
                     else {

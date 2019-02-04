@@ -33,29 +33,29 @@ function pageLoaded(args) {
 		month = "0" + month;
 
 
-	//console.log("Giorno: " + day);
-	//console.log("Mese: " + month);
+	console.log("Giorno: " + day);
+	console.log("Mese: " + month);
+	console.log("Anno: " + year);
 
 	date = year + month + day;
 
-	//console.log("Date: "+ date);
+	console.log("Date: "+ date);
 
 	page.bindingContext = page_data;
 
 }
 
 //Navigation button -> PAGE_DATA to PAGE1
-const Button = require("tns-core-modules/ui/button").Button;
-const Page = require("tns-core-modules/ui/page").Page;
-
+//const Button = require("tns-core-modules/ui/button").Button;
+//const Page = require("tns-core-modules/ui/page").Page;
 
 function onTap(args) {
 	var button = args.object;
 	const page = button.page;
 	var ora;
 
-	/*Creating string YYYYMMDDZHH00 */
 
+	/*Creating string YYYYMMDDZHH00 */
 	date = year + month + day;
 
 	if(page.getViewById("hours_search").selectedIndex < 10)

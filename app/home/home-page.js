@@ -22,36 +22,6 @@ function pageLoaded(args) {
    console.log("Previus Info: USER = "+ user + " PASS =" + pass );
    const url_login = api_base_url + "/user/login";
 
-   if (user != null && pass != null && isLogged == 0 && firstTime)
-   {
-     httpModule.request({
-       url: url_login,
-       method: "POST",
-       headers: {"Content-Type": "application/json"},
-       content: JSON.stringify({
-         name: user,
-         pass: pass
-       })
-     }).then((response) => {
-           const result = response.content.toJSON();
-           console.log(result.message);
-           //Disattiva rotellina
-
-           if (result.message == null) { //LOGIN SUCCESS
-             console.log("Logged as: USER = "+ user + " PASS =" + pass );
-             isLogged = 1;
-             dialog.alert({title: "", message: "Connesso!", okButtonText: "OK"});
-             home.set("login_status", "Logout");
-             firstTime = false;
-           } else { //LOGGIN INSUCCESS
-             dialog.alert({title: "Error", message: result.message, okButtonText: "OK"});
-           }
-         },
-         (e) => {
-           console.log("Error");
-         });
-   }
-
   if (isLogged == 0)
     home.set("login_status", "Login");
   else if (isLogged > 0)

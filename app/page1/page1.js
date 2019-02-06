@@ -174,14 +174,14 @@ exports.onTapLog = function(args) {
         then(function (result) {
             if  (result)
             {
-                pageData.set("login_status", "Login");
+                //pageData.set("login_status", "Login");
                 isLogged = 0;
                 appSettings.remove("username");
                 appSettings.remove("password");
                 appSettings.setNumber("mytiluse", 0);
 
-                dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
-                pageData.frame.navigate("home/home_page");
+                //dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+                pageData.frame.navigate("home/home-page");
             }
         })
 

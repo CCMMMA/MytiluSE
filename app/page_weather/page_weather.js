@@ -7,6 +7,7 @@ var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var imageSource = require("image-source");
 var dialog = require("tns-core-modules/ui/dialogs");
+const appSettings = require("application-settings");
 var page2;
 
 function pageLoaded(args) {
@@ -99,25 +100,27 @@ exports.onTapAbout = function(args) {
 };
 
 exports.onTapLog = function(args) {
-	const button = args.object;
-	const page2 = button.page;
+    const button = args.object;
+    const page2 = button.page;
 
-	if(isLogged == 0)
-		page2.frame.navigate("page_login/page_login");
-	else
-	{
-		dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
-		then(function (result) {
-			if  (result)
-			{
-				page2.set("login_status", "Login");
-				isLogged = 0;
-				appSettings.remove("username");
-				appSettings.remove("password");
-				appSettings.setNumber("mytiluse", 0);
+    if(isLogged == 0)
+        page2.frame.navigate("page_login/page_login");
+    else
+    {
+        dialog.confirm({title: "Disconnessione", message: "Sicuro di voler rimuovere username e password?", okButtonText: "Si",cancelButtonText:"No"}).
+        then(function (result) {
+            if  (result)
+            {
+                //page2.set("login_status", "Login");
+                isLogged = 0;
+                appSettings.remove("username");
+                appSettings.remove("password");
+                appSettings.setNumber("mytiluse", 0);
 
-				dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
-			}
-		})
-	}
+                //dialog.alert({ title: "", message: "Disconnesso!", okButtonText: "OK" });
+                //page2.frame.goBack();
+                page2.frame.navigate("home/home-page");
+            }
+        })
+    }
 };

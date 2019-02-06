@@ -8,7 +8,6 @@ var observableModule = require("data/observable");
 const application = require("tns-core-modules/application");
 const frameModule = require("tns-core-modules/ui/frame");
 const appSettings = require("application-settings");
-const httpModule = require("http");
 var home;
 var firstTime = true;
 
@@ -20,7 +19,15 @@ function pageLoaded(args) {
    const user = appSettings.getString("username",null);
    const pass = appSettings.getString("password",null);
    console.log("Previus Info: USER = "+ user + " PASS =" + pass );
+
    const url_login = api_base_url + "/user/login";
+
+   if (user != null && pass != null && isLogged == 0 && firstTime)
+   {
+       isLogged = 1;
+       home.set("login_status", "Logout");
+       firstTime = false;
+   }
 
   if (isLogged == 0)
     home.set("login_status", "Login");

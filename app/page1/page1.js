@@ -9,7 +9,11 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 var search_data;
 var place;
 var array;
-var location = ["VET0130", "VET0020", "VET0021", "VET0072", "VET0071", "VET0100", "VET0062", "VET0150", "VET0055", "VET0054", "VET0056", "VET0051", "VET0050", "VET0053", "VET0052", "VET0121", "VET0123", "VET0122", "VET0125", "VET0124", "VET0000", "VET0031", "VET0030", "VET0140", "VET0061", "VET0063", "VET0064", "VET0110", "VET0010", "VET0160", "VET0057", "VET0042", "VET0041"];
+
+var locationVEB = ["VEB1500030", "VEB1500029", "VEB1500015", "VEB1500012", "VEB1500013", "VEB1500018", "VEB1500034", "VEB1500020", "VEB1500038", "VEB1500014", "VEB1500022", "VEB1500032", "VEB1500041", "VEB1500026", "VEB1500033", "VEB1500016"];
+var locationVET = ["VET0130", "VET0020", "VET0021", "VET0072", "VET0071", "VET0100", "VET0062", "VET0150", "VET0055", "VET0054", "VET0056", "VET0051", "VET0050", "VET0053", "VET0052", "VET0121", "VET0123", "VET0122", "VET0125", "VET0124", "VET0000", "VET0031", "VET0030", "VET0140", "VET0061", "VET0063", "VET0064", "VET0110", "VET0010", "VET0160", "VET0057", "VET0042", "VET0041"];
+var location;
+
 const appSettings = require("application-settings");
 var pageData;
 
@@ -20,10 +24,22 @@ function pageLoaded(args) {
     pageData = new Observable.fromObject({
         mytiluse2: array
     });
-    search_data = page.navigationContext; //Read data from data_page
 
+    search_data = appSettings.getString("data");
 
+    var scelta;
+    scelta = page.navigationContext.scelta;
+
+    if(scelta == 0){
+        location = locationVET;
+    }
+    else if(scelta == 1){
+        location = locationVEB;
+    }
+
+    console.log("SCELTA = " + scelta);
     console.log("LOG: " + isLogged);
+
     if (isLogged == 0)
         pageData.set("login_status", "Login");
     else if (isLogged > 0)
@@ -143,7 +159,6 @@ function onTap(args) {
     {
         moduleName: "page_selection/page_selection",
         context: {
-            send_data: search_data,
             send_ind: array.getItem(index).id,
             send_name: array.getItem(index).name
         }

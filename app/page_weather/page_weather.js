@@ -1,7 +1,6 @@
 var frameModule = require("ui/frame");
 var PageWeatherViewModel = require("./page_weather-view-model");
 var pageweatherViewModel = new PageWeatherViewModel();
-var data;
 var observableModule = require("data/observable");
 var Observable = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
@@ -31,14 +30,15 @@ function pageLoaded(args) {
 	page2.set("isVisible2", "visible");
 
 	prec_data = page.navigationContext;
-	console.log("Data : ", prec_data.send_data);
+	var data = appSettings.getString("data");
+	console.log("Data : ", data);
 	console.log("ID : ", prec_data.send_ind);
 	console.log("Nome : ", prec_data.send_name);
 
 	//URLs
-	var url_map = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url_map2 = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?output=wn1&date=" + prec_data.send_data;
-	var url = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
+	var url_map = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?date=" + data;
+	var url_map2 = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "/plot/image?output=wn1&date=" + data;
+	var url = api_base_url + "/products/wrf5/forecast/" + prec_data.send_ind + "?date=" + data;
 
 
 	// START FETCH MAP1

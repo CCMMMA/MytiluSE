@@ -36,14 +36,14 @@ function pageLoaded(args) {
 
   //url
   var url = api_base_url + "/products";
-  var url_policy = api_base_url + "/legal/discaimer";
+  var url_policy = api_base_url + "/legal/disclaimer";
 
   fetch(url_policy)
     .then((response) => response.json())
     .then((data1) => {
-      home.set("policy", data1.discaimer.it);
+      home.set("policy", data1.disclaimer.it);
     })
-    .catch(error => console.error("[PAGE_SEA] ERROR DATA ", error));
+    .catch(error => console.error("[PAGE_HOME] ERROR DATA ", error));
 
   fetch(url).then(function (response) {
     if (response.status != 200) {

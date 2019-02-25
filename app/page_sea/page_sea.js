@@ -41,17 +41,18 @@ function pageLoaded(args) {
 	page2.set("visible_RMS3", "visible");
 
 	prec_data = page.navigationContext;
-	console.log("Data : ", prec_data.send_data);
+	var data = appSettings.getString("data");
+	console.log("Data : ", data);
 	console.log("ID : ", prec_data.send_ind);
 	console.log("Nome : ", prec_data.send_name);
 
-	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + prec_data.send_data;
-	var url_temp = api_base_url +"/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + prec_data.send_data;
+	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data;
+	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + data;
+	var url_temp = api_base_url +"/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + data;
 
-	var url_map_rms3 = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + prec_data.send_data;
-	var url = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
-	var url_status = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + prec_data.send_data;
+	var url_map_rms3 = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data;
+	var url = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "?date=" + data;
+	var url_status = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + data;
 
 
 	// START FETCH MAP RMS3

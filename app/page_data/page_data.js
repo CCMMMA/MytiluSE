@@ -2,6 +2,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var PageDataViewModel = require("./page_data-view-model");
 var Observable = require("data/observable");
+const appSettings = require("application-settings");
 var pagedataViewModel = new PageDataViewModel();
 var year = "";
 var month = "";
@@ -65,10 +66,10 @@ function onTap(args) {
 
 	date = date + "Z" + ora + "00";
 
+	appSettings.setString("data", date);
 	//Done, sending to page1
 	const navigationEntry = {
-		moduleName: "page1/page1",
-		context: date,
+		moduleName: "page_selection_place/page_selection_place",
 		animated: true
 	};
 	console.log("[PAGE_DATA] SELECTED DATA = ", date);

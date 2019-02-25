@@ -29,7 +29,6 @@ function onTapMeteo(args) {
 		{
 			moduleName: "page_weather/page_weather",
 			context: {
-				send_data: prec_data.send_data,
 				send_ind: prec_data.send_ind,
 				send_name: prec_data.send_name,
 			}
@@ -44,7 +43,6 @@ function onTapSea(args) {
 		{
 			moduleName: "page_sea/page_sea",
 			context: {
-				send_data: prec_data.send_data,
 				send_ind: prec_data.send_ind,
 				send_name: prec_data.send_name,
 			}

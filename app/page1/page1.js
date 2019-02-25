@@ -130,8 +130,8 @@ function pageLoaded(args) {
                 else if (data.result == "error" && flag) {
                     dialog.alert({ title: "Errore", message: data.details, okButtonText: "OK" });
                     flag = false;
-                    }
-                })
+                }
+            })
 
 
             .then(function () {
@@ -156,13 +156,13 @@ function onTap(args) {
     const page = button.page;
 
     const nav =
-    {
-        moduleName: "page_selection/page_selection",
-        context: {
-            send_ind: array.getItem(index).id,
-            send_name: array.getItem(index).name
-        }
-    };
+        {
+            moduleName: "page_selection/page_selection",
+            context: {
+                send_ind: array.getItem(index).id,
+                send_name: array.getItem(index).name
+            }
+        };
 
     page.frame.navigate(nav);
 }

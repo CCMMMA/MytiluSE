@@ -1,5 +1,5 @@
 <Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd">
-    <ActionBar title="Selezione" flat="true">
+    <ActionBar flat="true">
         <NavigationButton text="Indietro"></NavigationButton>
     </ActionBar>
 

@@ -29,9 +29,9 @@
                 <Label text="{{ place }}" verticalAlignment="center" />
             </FlexboxLayout>
 
-            <FlexboxLayout flexWrap="wrap" flexDirection="row" marginTop="5">
-                <Label text="Località:" verticalAlignment="center" style="font-weight:bold; flex-grow:1" />
-                <Label text="{{ loc }}" verticalAlignment="center" />
+            <FlexboxLayout flexDirection="row">
+                <Label text="Località:" verticalAlignment="center" style="font-weight:bold;" flexGrow="1" width="50%"/>
+                <Label text="{{ loc }}" verticalAlignment="center" class="text-right" textWrap="true" flexGrow="1" width="50%"/>
             </FlexboxLayout>
 
             <FlexboxLayout flexWrap="wrap" flexDirection="row" marginTop="5">

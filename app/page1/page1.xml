@@ -13,9 +13,9 @@
 
 	<StackLayout>		
 		<FlexboxLayout flexDirection="row" class="list-group1" isUserInteractionEnabled="false">
-			<Label class="list-center" text="Località"  style="flex-grow: 4;font-weight:bold;" />
-			<Label class="list-center" text="Corrente Superficiale" style="flex-grow: 1;font-weight:bold" />
-			<Label class="list-center" text="Stato" style="flex-grow: 1; font-weight:bold" />
+			<Label text="Località"  flexGrow="1" class="font-weight-bold text-center" width="50%" />
+			<Label flexGrow="1" class="font-weight-bold text-center" width="30%" text="Corrente Superficiale" textWrap="true"/>
+			<Label text="Stato" flexGrow="1" class="font-weight-bold text-center" width="20%" />
 		</FlexboxLayout>
 
 		<ActivityIndicator class="activity-indicator" busy="{{ isBusy }}" height="{{isHeigh}}" />
@@ -24,10 +24,12 @@
 			<ListView class="list-group" items="{{ mytiluse2 }}" itemTap="onTap" orientation="vertical">
 				<ListView.itemTemplate>
 					<FlexboxLayout flexDirection="row" class="list-group-item">
-						<Label text="{{ name }}" style="width:250px; flex-grow: 3"/>
-						<Image src="{{ curDir }}" style="flex-grow: 1;  width:50px; height:50px;" />
-						<Label text="{{ curVal }}" style="flex-grow: 1; text-align: center;" />
-						<Image src="{{ status }}" style="flex-grow: 2; width:50px; height:50px" margin="0 5 0 5"/>
+						<Label text="{{ name }}" flexGrow="1" class="text-left" width="50%" textWrap="true"/>
+						<StackLayout flexGrow="1" class="text-center" width="30%" orientation="horizontal">
+							<Image src="{{ curDir }}" style="width:50px; height:50px" marginRight="5"/>
+							<Label text="{{ curVal }}"/>
+						</StackLayout>
+						<Image src="{{ status }}" flexGrow="1" class="text-center" width="20%" style="width:50px; height:50px" margin="0 5 0 5"/>
 					</FlexboxLayout>
 				</ListView.itemTemplate>
 			</ListView>

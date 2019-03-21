@@ -78,7 +78,7 @@ function pageLoaded(args) {
 				page2.set("temp", data1.forecast.t2c + " °C");
 				page2.set("rain", data1.forecast.crh + " mm");
 				page2.set("status", "~/images/meteo_icon/" + data1.forecast.icon);
-				page2.set("status_name", data1.forecast.text);
+				page2.set("status_name", data1.forecast.text.it);
 				//array.push({ "place": prec_data.send_ind, "loc": prec_data.send_name, "curVal": ws10n + " nodi", "curDir": "~/images/arrow/" + data1.forecast.winds + ".png", "temp": data1.forecast.t2c + " °C", "rain": data1.forecast.crh + " mm", "status": "~/images/meteo_icon/" + data1.forecast.icon, "status_name":data1.forecast.text});
 			}
 			else if (data1.result == "error") {

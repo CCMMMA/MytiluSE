@@ -2,19 +2,23 @@
       xmlns:sd="nativescript-ui-sidedrawer">
     <Page.actionBar>
         <ActionBar title="About" flat="true"></ActionBar>
-
     </Page.actionBar>
-    <ScrollView orientation="vertical">
 
-    <StackLayout orientation="vertical" horizontalAlignment="center"
-                 verticalAlignment="center" margin="10 10 10 10">
-        <Image src="~/images/logo_mytiluse2.png"/>
-
-        <Label  text="{{ description_ }}" textWrap="true" fontSize="13" textAlignment="center" margin="10 0 5 0"/>
-        <Label  text="DEVELOPED BY:" textWrap="true" fontSize="16" textAlignment="center" margin="5 0 5 0" color="red"/>
-        <Label  text="Ciro Giuseppe De Vita" textWrap="true" fontSize="13" textAlignment="left" margin="5 0 5 0"/>
-        <Label  text="Gennaro Mellone" textWrap="true" fontSize="13" textAlignment="left" />
-    </StackLayout>
-
+    <ScrollView>
+        <StackLayout orientation="vertical">
+            <Image src="~/images/logo_mytiluse2.png" horizontalAlignment="center" margin="20 20 20 20"></Image>
+            <Label textAlignment="center" textWrap="true" text="{{description_}}"></Label>
+            <StackLayout orientation="horizontal" horizontalAlignment="center" marginTop="5">
+                <Label text="Versione " marginRight="10"></Label>
+                <Label text="{{version}}"></Label>
+            </StackLayout>
+            <Label textAlignment="center" textWrap="true" text="https://meteo.uniparthenope.it" marginTop="5" color="blue" tap="meteo_web"></Label>
+            <Label textAlignment="center" textWrap="true" text="Dipartimento di Scienze e Tecnologie, Università degli studi di Napoli Parthenope" marginTop="10"></Label>
+            <Label textAlignment="center" textWrap="true" text="Team leader: Raffaele Montella" marginTop="10"></Label>
+            <Label textAlignment="center" textWrap="true" text="Sviluppo: Ciro Giuseppe De Vita, Gennaro Mellone" marginTop="10"></Label>
+            <Label textAlignment="center" textWrap="true" text="Gestione dati: Diana Di Luccio" marginTop="10"></Label>
+            <Label textAlignment="center" textWrap="true" text="Logo: Francesco Peluso" marginTop="10" marginBottom="20"></Label>
+        </StackLayout>
     </ScrollView>
+
 </Page>

@@ -9,6 +9,25 @@ var dialog = require("tns-core-modules/ui/dialogs");
 const appSettings = require("application-settings");
 var page2;
 
+function getDataCache() {
+	var curr = new Date();
+	var cache_data = " ";
+	var a = curr.getFullYear();
+	var m = curr.getMonth();
+	if(m < 10)
+		m = "0" + m;
+	var g = curr.getDate();
+	if(g < 10)
+		g = "0" + g;
+	var h = curr.getHours();
+	if(h < 10)
+		h = "0" + h;
+
+	cache_data = a + "" + m + "" + g + "Z" + h;
+
+	return cache_data;
+}
+
 function pageLoaded(args) {
 	var page = args.object;
 	var src_map;
@@ -46,11 +65,13 @@ function pageLoaded(args) {
 	console.log("ID : ", prec_data.send_ind);
 	console.log("Nome : ", prec_data.send_name);
 
-	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data;
-	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + data;
-	var url_temp = api_base_url +"/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + data;
+	var data_cache = getDataCache();
 
-	var url_map_rms3 = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data;
+	var url_map_wcm3 = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data + "&rand=" + data_cache;
+	var url_sal = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sss&date=" + data + "&rand=" + data_cache;
+	var url_temp = api_base_url +"/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?output=sst&date=" + data + "&rand=" + data_cache;
+
+	var url_map_rms3 = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "/plot/image?date=" + data + "&rand=" + data_cache;
 	var url = api_base_url + "/products/rms3/forecast/" + prec_data.send_ind + "?date=" + data;
 	var url_status = api_base_url + "/products/wcm3/forecast/" + prec_data.send_ind + "?date=" + data;
 

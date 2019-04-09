@@ -16,8 +16,7 @@
             <Label textAlignment="center" textWrap="true" text="Dipartimento di Scienze e Tecnologie, Università degli studi di Napoli Parthenope" marginTop="10"></Label>
             <Label textAlignment="center" textWrap="true" text="Team leader: Raffaele Montella" marginTop="10"></Label>
             <Label textAlignment="center" textWrap="true" text="Sviluppo: Ciro Giuseppe De Vita, Gennaro Mellone" marginTop="10"></Label>
-            <Label textAlignment="center" textWrap="true" text="Gestione dati: Diana Di Luccio" marginTop="10"></Label>
-            <Label textAlignment="center" textWrap="true" text="Logo: Francesco Peluso" marginTop="10" marginBottom="20"></Label>
+            <Label textAlignment="center" textWrap="true" text="Gestione dati: Diana Di Luccio" marginBottom="20" marginTop="10"></Label>
         </StackLayout>
     </ScrollView>
 
